@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Route để render file HTML khi truy cập vào trang chủ
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', './index.html'));
 });
 
 const PORT = 3000;
