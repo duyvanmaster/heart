@@ -120,20 +120,30 @@
   </div>
 
   <script>
-    // Cập nhật thời gian với ngày bắt đầu từ 468
+    let startDay = 468; // Ngày bắt đầu là 468
+    let lastDateChecked = new Date().getDate(); // Lưu lại ngày hiện tại để kiểm tra thay đổi
+
     function updateTime() {
-      const startDay = 468;
       const now = new Date();
-      const days = startDay; // Bắt đầu từ ngày 468
+
+      // Kiểm tra nếu đã sang ngày mới
+      if (now.getDate() !== lastDateChecked) {
+        startDay += 1; // Tăng số ngày lên 1
+        lastDateChecked = now.getDate(); // Cập nhật ngày đã kiểm tra
+      }
+
+      // Lấy giờ, phút, giây hiện tại
       const hours = String(now.getHours()).padStart(2, '0');
       const minutes = String(now.getMinutes()).padStart(2, '0');
       const seconds = String(now.getSeconds()).padStart(2, '0');
-      document.getElementById('time-display').innerText = `${days} \n${hours}:${minutes}:${seconds}`;
+
+      // Hiển thị ngày, giờ, phút, giây
+      document.getElementById('time-display').innerText = `${startDay} \n${hours}:${minutes}:${seconds}`;
     }
 
     // Gọi hàm updateTime ngay lập tức khi trang tải
     updateTime();
-    // Sau đó, thiết lập để cập nhật thời gian mỗi giây
+    // Cập nhật thời gian mỗi giây
     setInterval(updateTime, 1000);
 
     /*
