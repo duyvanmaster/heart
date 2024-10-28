@@ -39,7 +39,8 @@
       position: absolute;
       top: 10%;
       white-space: pre-line;
-      animation: animate 1.3s infinite; /* Áp dụng hiệu ứng như trái tim */
+      animation: animate 1.3s infinite;
+      /* Áp dụng hiệu ứng như trái tim */
     }
 
     canvas {
@@ -120,16 +121,16 @@
   </div>
 
   <script>
-    let startDay = 468; // Ngày bắt đầu là 468
-    let lastDateChecked = new Date().getDate(); // Lưu lại ngày hiện tại để kiểm tra thay đổi
+    let startDay = 469; // Ngày bắt đầu là 468
+    let lastDateChecked = new Date().toDateString(); // Lưu lại ngày hiện tại dưới dạng chuỗi
 
     function updateTime() {
       const now = new Date();
 
       // Kiểm tra nếu đã sang ngày mới
-      if (now.getDate() !== lastDateChecked) {
+      if (now.toDateString() !== lastDateChecked) {
         startDay += 1; // Tăng số ngày lên 1
-        lastDateChecked = now.getDate(); // Cập nhật ngày đã kiểm tra
+        lastDateChecked = now.toDateString(); // Cập nhật ngày đã kiểm tra
       }
 
       // Lấy giờ, phút, giây hiện tại
@@ -145,6 +146,7 @@
     updateTime();
     // Cập nhật thời gian mỗi giây
     setInterval(updateTime, 1000);
+
 
     /*
      * Phần mã JavaScript tạo hiệu ứng trái tim
@@ -335,4 +337,5 @@
     })(document.getElementById('pinkboard'));
   </script>
 </BODY>
+
 </HTML>
