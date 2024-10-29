@@ -121,11 +121,13 @@
   </div>
 
   <script>
-    let startDay = 469; // Ngày bắt đầu là 468
-    let lastDateChecked = new Date().toDateString(); // Lưu lại ngày hiện tại dưới dạng chuỗi
+
+
+    let startDay = 469; // Ngày bắt đầu
+    let lastDateChecked = new Date().toDateString(); // Lưu lại ngày hiện tại
 
     function updateTime() {
-      const now = new Date();
+      const now = new Date(); // Sử dụng thời gian thực
 
       // Kiểm tra nếu đã sang ngày mới
       if (now.toDateString() !== lastDateChecked) {
@@ -133,7 +135,7 @@
         lastDateChecked = now.toDateString(); // Cập nhật ngày đã kiểm tra
       }
 
-      // Lấy giờ, phút, giây hiện tại
+      // Lấy giờ, phút, giây hiện tại từ thời gian thực
       const hours = String(now.getHours()).padStart(2, '0');
       const minutes = String(now.getMinutes()).padStart(2, '0');
       const seconds = String(now.getSeconds()).padStart(2, '0');
