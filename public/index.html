@@ -123,31 +123,32 @@
   <script>
 
 
-    let startDay = 469; // Ngày bắt đầu
-    let lastDateChecked = new Date().toDateString(); // Lưu lại ngày hiện tại
+let startDay = 471;
+    let lastDateChecked = new Date().toDateString();
+
+    let simulatedTime = new Date();
 
     function updateTime() {
-      const now = new Date(); // Sử dụng thời gian thực
+      simulatedTime.setSeconds(simulatedTime.getSeconds() + 1);
 
-      // Kiểm tra nếu đã sang ngày mới
-      if (now.toDateString() !== lastDateChecked) {
-        startDay += 1; // Tăng số ngày lên 1
-        lastDateChecked = now.toDateString(); // Cập nhật ngày đã kiểm tra
+      if (simulatedTime.toDateString() !== lastDateChecked) {
+        startDay += 1;
+        lastDateChecked = simulatedTime.toDateString();
+      } 
+      else if (simulatedTime.getHours() === 0 && simulatedTime.getMinutes() === 0 && simulatedTime.getSeconds() === 0) {
+        startDay += 1;
+        lastDateChecked = simulatedTime.toDateString();
       }
 
-      // Lấy giờ, phút, giây hiện tại từ thời gian thực
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const hours = String(simulatedTime.getHours()).padStart(2, '0');
+      const minutes = String(simulatedTime.getMinutes()).padStart(2, '0');
+      const seconds = String(simulatedTime.getSeconds()).padStart(2, '0');
 
-      // Hiển thị ngày, giờ, phút, giây
       document.getElementById('time-display').innerText = `${startDay} \n${hours}:${minutes}:${seconds}`;
     }
 
-    // Gọi hàm updateTime ngay lập tức khi trang tải
     updateTime();
-    // Cập nhật thời gian mỗi giây
-    setInterval(updateTime, 500);
+    setInterval(updateTime, 1000);
 
 
     /*
